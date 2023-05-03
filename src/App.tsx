@@ -1,8 +1,14 @@
-function App(){
+import {Theme} from './theme/Theme'
+
+
+function App() {
 
   return (
     <>
-<h1> Todo List</h1>
+    <Theme>
+      <h1> Todo List</h1>
+
+    </Theme>
 
     </>
   );
