@@ -1,7 +1,7 @@
 import { Theme } from "./theme/Theme"
 import { AppBar, Badge, Button, colors, Divider, Grid, TextField, Toolbar, Typography, useTheme } from "@mui/material";
 import { Container, spacing } from "@mui/system";
-import { PlusCircle, Rocket, ClipboardText } from "phosphor-react";
+import { PlusCircle, Rocket, ClipboardText, TextAlignJustify } from "phosphor-react";
 import { grey } from '@mui/material/colors';
 import { useState } from 'react';
 
@@ -34,31 +34,36 @@ function App() {
             position: 'relative',
             paddingTop: '50px'
           }}>
+
             <Grid container spacing={tema.spacing(0.5)} sx={{
               position: 'absolute',
-              top: '-30px'
+              top: '-27px',
+             justifyContent: 'center'
             }}>
-              <Grid item xl={8} sm={10}>
+              <Grid item xl={7} sm={10} xs={7}>
                 <TextField variant="outlined" name="task" fullWidth sx={{
                   backgroundColor: colors.grey[800]
                 }} />
               </Grid>
-              <Grid item xl={4} sm={2} xs={2}>
+              <Grid item xl={4.5} sm={2} xs={2}>
                 <Button variant="contained" fullWidth sx={{
                   heigh: '100%'
                 }}> <span> Criar</span>   <PlusCircle size={32} /></Button>
               </Grid>
             </Grid>
-            <Grid container spacing={tema.spacing(1)}>
-              <Grid item>
-                <Typography variant="caption" sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: tema.spacing(1)
 
-                }}>
+            <Grid container spacing={tema.spacing(5)}>
+
+              <Grid item xl={12} xs={12} sm={12} sx={{
+                display: 'flex',
+                justifyContent: 'space-between'
+              }}>
+
+                <Typography variant="caption">
                   <Badge color='primary' badgeContent={0} showZero> Tarefas Criadas</Badge>
-                  <Badge  color='primary' badgeContent={0} showZero> Concluidas</Badge>
+                </Typography>
+                <Typography variant="caption">
+                  <Badge color='primary' badgeContent={0} showZero> Concluidas</Badge>
                 </Typography>
 
               </Grid>
@@ -67,25 +72,25 @@ function App() {
 
             <Divider />
 
-            <Grid  container sx={{
+            <Grid container sx={{
               textAlign: 'center',
               alignItems: 'center',
-             padding: '50px',
-             
+              padding: '50px',
+
             }}>
               <Grid xl={12} xs={12}>
                 <ClipboardText size={50} />
                 <Typography sx={{
                   color: colors.grey[100],
-                  fontSize: '20px'
-                
+                  fontSize: '200%'
+
                 }}>
                   Você ainda não tem tarefas cadastradas
                 </Typography>
 
                 <Typography sx={{
                   color: colors.grey[500],
-                  fontSize: '18px'
+                  fontSize: '150%'
                 }}>
                   Crie tarefas e organize seus itens a fazer
                 </Typography>
