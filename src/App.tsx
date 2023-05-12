@@ -3,10 +3,14 @@ import { AppBar, Badge, Button, colors, Divider, Grid, TextField, Toolbar, Typog
 import { Container, spacing } from "@mui/system";
 import { PlusCircle, Rocket, ClipboardText, TextAlignJustify } from "phosphor-react";
 import { grey } from '@mui/material/colors';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const tema = useTheme()
+  const [tasks, setTasks] = useState<Task[]>()
+  useEffect(()=>{
+
+  },[])
   return (
     <>
       <Theme>
