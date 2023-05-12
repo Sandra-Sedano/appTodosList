@@ -40,12 +40,12 @@ function App() {
               top: '-27px',
              justifyContent: 'center'
             }}>
-              <Grid item xl={7} sm={10} xs={7}>
+              <Grid item xl={10} sm={10} xs={7}>
                 <TextField variant="outlined" name="task" fullWidth sx={{
                   backgroundColor: colors.grey[800]
                 }} />
               </Grid>
-              <Grid item xl={4.5} sm={2} xs={2}>
+              <Grid item xl={2} sm={2} xs={2}>
                 <Button variant="contained" fullWidth sx={{
                   heigh: '100%'
                 }}> <span> Criar</span>   <PlusCircle size={32} /></Button>
