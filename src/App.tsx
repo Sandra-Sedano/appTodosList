@@ -1,16 +1,17 @@
 import { Theme } from "./theme/Theme"
-import { AppBar, Badge, Button, colors, Divider, Grid, TextField, Toolbar, Typography, useTheme } from "@mui/material";
+import { AppBar, Badge, Button, Checkbox, colors, Divider, Grid, ListItem, ListItemText, TextField, Toolbar, Typography, useTheme } from "@mui/material";
 import { Container, spacing } from "@mui/system";
-import { PlusCircle, Rocket, ClipboardText, TextAlignJustify } from "phosphor-react";
-import { grey } from '@mui/material/colors';
+import { PlusCircle, Rocket, ClipboardText, TextAlignJustify, Trash } from "phosphor-react";
 import { useEffect, useState } from 'react';
 
 function App() {
   const tema = useTheme()
   const [tasks, setTasks] = useState<Task[]>()
-  useEffect(()=>{
 
-  },[])
+  useEffect(() => {
+
+  }, [])
+  
   return (
     <>
       <Theme>
@@ -42,7 +43,7 @@ function App() {
             <Grid container spacing={tema.spacing(0.5)} sx={{
               position: 'absolute',
               top: '-27px',
-             justifyContent: 'center'
+              justifyContent: 'center'
             }}>
               <Grid item xl={10} sm={10} xs={7}>
                 <TextField variant="outlined" name="task" fullWidth sx={{
@@ -82,7 +83,20 @@ function App() {
               padding: '50px',
 
             }}>
-              <Grid xl={12} xs={12}>
+
+
+              <ListItem sx={{
+                backgroundColor: colors.grey[900]
+
+              }}>
+                <Checkbox />
+                <ListItemText primary={'texto aqui'} />
+                <Trash size={32} />
+              </ListItem>
+              
+
+
+              {/* <Grid xl={12} xs={12}>
                 <ClipboardText size={50} />
                 <Typography sx={{
                   color: colors.grey[100],
@@ -98,9 +112,13 @@ function App() {
                 }}>
                   Crie tarefas e organize seus itens a fazer
                 </Typography>
-              </Grid>
+              </Grid> */}
 
             </Grid>
+
+
+
+
 
           </Container>
         </main>

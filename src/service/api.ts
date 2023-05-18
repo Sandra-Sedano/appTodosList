@@ -24,7 +24,7 @@ export async function save(tasks:Task) {
 }
 // atualizar registro 
 export async function update(tasks:Task) {
-    const response= await api.put(`tasks/${id}`, {
+    const response= await api.put(`tasks/${tasks.id}`, {
         ...tasks
     })
     return response.data
