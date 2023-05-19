@@ -2,16 +2,38 @@ import { Theme } from "./theme/Theme"
 import { AppBar, Badge, Button, Checkbox, colors, Divider, Grid, ListItem, ListItemText, TextField, Toolbar, Typography, useTheme } from "@mui/material";
 import { Container, spacing } from "@mui/system";
 import { PlusCircle, Rocket, ClipboardText, TextAlignJustify, Trash } from "phosphor-react";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getAll, save } from "./service/api";
+import { Task } from "./types";
 
 function App() {
   const tema = useTheme()
-  const [tasks, setTasks] = useState<Task[]>()
+  const [tasks, setTasks] = useState<Task[]>([])
+
+  const [listartarefa, setListarTarefa] = useState('')
+  const [isloading, setIsLoading] = useState<Boolean>(false)
+
+  const valorUser = (event: React.ChangeEvent<HTMLInputElement>) => {
+ setListarTarefa(event.target.value)
+  }
+
+const  handleClick = () => {
+
+  save ({description:listartarefa, done:false})
+
+}
 
   useEffect(() => {
-
+    async function listar() {
+      setIsLoading(true)
+      setTasks(await getAll())
+      setIsLoading(false)
+    }
+    listar()
   }, [])
-  
+
+
+
   return (
     <>
       <Theme>
@@ -46,12 +68,12 @@ function App() {
               justifyContent: 'center'
             }}>
               <Grid item xl={10} sm={10} xs={7}>
-                <TextField variant="outlined" name="task" fullWidth sx={{
+                <TextField variant="outlined" value={listartarefa} onChange ={valorUser} name="task" fullWidth sx={{
                   backgroundColor: colors.grey[800]
                 }} />
               </Grid>
               <Grid item xl={2} sm={2} xs={2}>
-                <Button variant="contained" fullWidth sx={{
+                <Button variant="contained" fullWidth onClick={handleClick} sx={{
                   heigh: '100%'
                 }}> <span> Criar</span>   <PlusCircle size={32} /></Button>
               </Grid>
@@ -84,16 +106,22 @@ function App() {
 
             }}>
 
+              {
+                tasks.map(Task => {
+                  return(
+                    <ListItem key={Task.id} sx={{
+                      backgroundColor: colors.red[900]
 
-              <ListItem sx={{
-                backgroundColor: colors.grey[900]
+                    }}>
+                      <Checkbox checked={Task.done}/>
+                      <ListItemText primary={Task.description} />
+                      <Trash size={32} />
+                    </ListItem>
+                  )
+                })
+              }
 
-              }}>
-                <Checkbox />
-                <ListItemText primary={'texto aqui'} />
-                <Trash size={32} />
-              </ListItem>
-              
+
 
 
               {/* <Grid xl={12} xs={12}>
